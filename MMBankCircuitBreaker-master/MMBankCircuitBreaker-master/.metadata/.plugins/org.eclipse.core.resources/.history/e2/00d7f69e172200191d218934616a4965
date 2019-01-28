@@ -1,0 +1,5 @@
+package com.capgemini.WebsiteService.controller;
+
+public class WebsiteController {
+
+}

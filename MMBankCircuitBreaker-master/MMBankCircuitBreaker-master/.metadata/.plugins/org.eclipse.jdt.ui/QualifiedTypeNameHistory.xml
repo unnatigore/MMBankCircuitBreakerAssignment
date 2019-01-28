@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.data.mongodb.repository.MongoRepository"/>
+<fullyQualifiedTypeName name="com.capgemini.AccountService.Entity.SavingsAccount"/>
+<fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+<fullyQualifiedTypeName name="com.capgemini.ZuulServer.filters.PreFilter"/>
+<fullyQualifiedTypeName name="com.netflix.zuul.ZuulFilter"/>
+<fullyQualifiedTypeName name="com.netflix.zuul.exception.ZuulException"/>
+<fullyQualifiedTypeName name="com.netflix.zuul.context.RequestContext"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="com.capgemini.TransactionService.entity.CurrentDataSet"/>
+<fullyQualifiedTypeName name="com.capgemini.TransactionService.entity.TransactionType"/>
+<fullyQualifiedTypeName name="com.capgemini.TransactionService.entity.Transaction"/>
+<fullyQualifiedTypeName name="com.capgemini.WebsiteService.Entity.CurrentDataSet"/>
+<fullyQualifiedTypeName name="com.capgemini.WebsiteService.Entity.Transaction"/>
+<fullyQualifiedTypeName name="com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand"/>
+<fullyQualifiedTypeName name="com.capgemini.WebsiteService.Service.WebsiteService"/>
+<fullyQualifiedTypeName name="com.capgemini.WebsiteService.controller.WebsiteController"/>
+</qualifiedTypeNameHistroy>

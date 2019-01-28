@@ -1,0 +1,14 @@
+package com.capgemini.TransactionService.Repository;
+
+import java.util.List;
+
+import com.capgemini.TransactionService.entity.Transaction;
+
+public class TransactionRepository {
+
+	public List<Transaction> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

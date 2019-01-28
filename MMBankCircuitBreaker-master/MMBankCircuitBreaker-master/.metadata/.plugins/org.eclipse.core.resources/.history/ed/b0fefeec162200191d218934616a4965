@@ -1,0 +1,5 @@
+package com.capgemini.ZuulServer.filters;
+
+public class PostFilter {
+
+}

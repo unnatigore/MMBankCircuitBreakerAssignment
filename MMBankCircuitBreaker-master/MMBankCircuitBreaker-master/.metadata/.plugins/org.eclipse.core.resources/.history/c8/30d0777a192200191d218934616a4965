@@ -1,0 +1,5 @@
+package com.capgemini.TransactionService.Repository;
+
+public class TransactionRepository {
+
+}
