@@ -18,39 +18,43 @@ import com.capgemini.TransactionService.entity.CurrentDataSet;
 import com.capgemini.TransactionService.entity.Transaction;
 import com.capgemini.TransactionService.entity.TransactionType;
 
-
-
 @RestController
 @RequestMapping("/transactions")
 public class TransactionResource {
 
 	@Autowired
 	RestTemplate restTemplate;
-	
+
 	@Autowired
 	TransactionService service;
-	
+
 	@PostMapping
-	public ResponseEntity<Transaction> deposit(@RequestBody Transaction transaction){
-		ResponseEntity<Double> balance = restTemplate.getForEntity("http://AccountService/accounts/"+transaction.getAccountNumber()+"/balance", Double.class);
-		  double currentBalance = balance.getBody();
-		  double updatedBalance = service.deposit(transaction.getAccountNumber(), transaction.getAmount(), currentBalance, TransactionType.DEPOSIT);
-		restTemplate.put("http://AccountService/accounts/"+transaction.getAccountNumber()+"?currentBalance="+updatedBalance, null);
+	public ResponseEntity<Transaction> deposit(@RequestBody Transaction transaction) {
+		ResponseEntity<Double> balance = restTemplate.getForEntity(
+				"http://AccountService/accounts/" + transaction.getAccountNumber() + "/balance", Double.class);
+		double currentBalance = balance.getBody();
+		double updatedBalance = service.deposit(transaction.getAccountNumber(), transaction.getAmount(), currentBalance,
+				TransactionType.DEPOSIT);
+		restTemplate.put("http://AccountService/accounts/" + transaction.getAccountNumber() + "?currentBalance="
+				+ updatedBalance, null);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PostMapping("/withdraw")
-	public ResponseEntity<Transaction> withDraw(@RequestBody Transaction transaction){
-		ResponseEntity<Double> balance = restTemplate.getForEntity("http://AccountService/accounts/"+transaction.getAccountNumber()+"/balance", Double.class);
-		  double currentBalance = balance.getBody();
-		  double updatedBalance =service.withdraw(transaction.getAccountNumber(), transaction.getAmount(), currentBalance, TransactionType.WITHDRAW);
-		 restTemplate.put("http://AccountService/accounts/"+transaction.getAccountNumber()+"?currentBalance="+updatedBalance, null);
-		 return new ResponseEntity<>(HttpStatus.OK);
+	public ResponseEntity<Transaction> withDraw(@RequestBody Transaction transaction) {
+		ResponseEntity<Double> balance = restTemplate.getForEntity(
+				"http://AccountService/accounts/" + transaction.getAccountNumber() + "/balance", Double.class);
+		double currentBalance = balance.getBody();
+		double updatedBalance = service.withdraw(transaction.getAccountNumber(), transaction.getAmount(),
+				currentBalance, TransactionType.WITHDRAW);
+		restTemplate.put("http://AccountService/accounts/" + transaction.getAccountNumber() + "?currentBalance="
+				+ updatedBalance, null);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<CurrentDataSet> listOfTransactions(){
-		CurrentDataSet currentDataSet =new CurrentDataSet();
+	public ResponseEntity<CurrentDataSet> listOfTransactions() {
+		CurrentDataSet currentDataSet = new CurrentDataSet();
 		List<Transaction> transactions = service.listOfTransactions();
 		currentDataSet.setTransactions(transactions);
 		return new ResponseEntity<>(currentDataSet, HttpStatus.OK);
