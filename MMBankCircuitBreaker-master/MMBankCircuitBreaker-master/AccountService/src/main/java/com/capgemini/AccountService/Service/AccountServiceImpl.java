@@ -1,10 +1,12 @@
 package com.capgemini.AccountService.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capgemini.AccountService.Entity.Account;
 import com.capgemini.AccountService.Entity.SavingsAccount;
 import com.capgemini.AccountService.Repository.AccountRepository;
 
@@ -26,8 +28,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public SavingsAccount getAccountById(int accountId) {
-		return accountRepository.findById(accountId).get();
+	public Optional<SavingsAccount> getAccountById(int accountId) {
+		System.out.println(accountId);
+		Optional<SavingsAccount> account = accountRepository.findById(accountId);
+		System.out.println("account "+account.get());
+		return account;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.capgemini.AccountService.Resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -41,8 +42,8 @@ public class AccountResource {
 	}
 	
 	@GetMapping("{accountId}")
-	public ResponseEntity<SavingsAccount> getAccountById(@PathVariable int accountId) {
-		SavingsAccount account = accountService.getAccountById(accountId);
+	public ResponseEntity<Optional<SavingsAccount>> getAccountById(@PathVariable int accountId) {
+		Optional<SavingsAccount> account = accountService.getAccountById(accountId);
 		if (account == null) {
 			return new ResponseEntity<>(account, HttpStatus.NOT_FOUND);
 		}
@@ -52,18 +53,19 @@ public class AccountResource {
 	
 	@GetMapping("{accountId}/balance")
 	public ResponseEntity<Double> getAccountBalanceById(@PathVariable int accountId) {
-		SavingsAccount account = accountService.getAccountById(accountId);
+		Optional<SavingsAccount> account = accountService.getAccountById(accountId);
 		if (account == null) {
+			System.out.println("Hell");
 			return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<>(account.getCurrentBalance(), HttpStatus.OK);
+		return new ResponseEntity<>(account.get().getCurrentBalance(), HttpStatus.OK);
 	}
 	
 	@PutMapping("{accountId}")
 	public void updateBalance(@PathVariable int accountId, @RequestParam("currentBalance") double currentBalance) {
-		SavingsAccount savingsAccount = accountService.getAccountById(accountId);
-		savingsAccount.setCurrentBalance(currentBalance);
-		accountService.updateBalance(savingsAccount);
+		Optional<SavingsAccount> savingsAccount = accountService.getAccountById(accountId);
+		savingsAccount.get().setCurrentBalance(currentBalance);
+		accountService.updateBalance(savingsAccount.get());
 	}
 	
 	

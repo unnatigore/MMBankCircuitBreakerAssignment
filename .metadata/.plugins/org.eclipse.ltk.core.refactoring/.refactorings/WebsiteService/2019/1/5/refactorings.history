@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;WebsiteService/src/main/webapp/WEB-INF/jsp/DepositeForm.jsp&apos; to &apos;DepositForm.jsp&apos;" description="Rename resource &apos;DepositeForm.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/webapp/WEB-INF/jsp/DepositeForm.jsp" name="DepositForm.jsp" stamp="1548820465120" updateReferences="true"/>
+</session>

@@ -1,6 +1,7 @@
 package com.capgemini.AccountService.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.capgemini.AccountService.Entity.SavingsAccount;
 
@@ -12,6 +13,6 @@ public interface AccountService  {
 
 	void updateBalance(SavingsAccount savingsAccount);
 
-	SavingsAccount getAccountById(int accountId);
+	Optional<SavingsAccount> getAccountById(int accountId);
 
 }
